@@ -1,14 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <p>
-    name: {{name | uppercase}}<br>
-    surname: {{surname}}<br>
-    age: {{age}}<br>
-    pi: {{pi | number: '1.1-2'}}<br>
-    data: {{data | date: 'dd-MM-yy'}}<br>
-  </p>
-  <p>Imie psa: {{dog && dog.name}}, wiek: {{dog?.age}}</p>
+<div>
+  <h3>Kurs {{title}}</h3>
  
+  <p>Dni tygodnia</p>
+
+  <ul>
+    <li *ngFor="let day of days">
+      {{day}}
+    </li>
+  </ul>
+
+
+    <p *ngFor="let dog of dogs">
+      {{dog.name}}, {{dog.age}}
+    </p>
+
 
 </div>
 

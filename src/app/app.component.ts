@@ -6,13 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = 'Janusz';
-  surname = 'Nnnn';
-  age = 23;
-  pi = Math.PI;
-  data = new Date();
 
-  dog: Dog;
+  title = 'Angular';
+
+  days = ['Poniedzialek', 'Wtorek', 'Sroda', 'Czwartek', 'Piatek', 'Sobota', 'Niedziela'];
+
+  dogs = new Array<Dog>();
+
+  constructor() {
+    this.dogs.push(new Dog('Reksio', 4), new Dog('Łatek', 3), new Dog('Maksiu', 5));
+  }
 
 }
 
