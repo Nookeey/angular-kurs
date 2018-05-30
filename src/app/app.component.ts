@@ -17,6 +17,17 @@ export class AppComponent {
     this.dogs.push(new Dog('Reksio', 4), new Dog('Łatek', 3), new Dog('Maksiu', 5));
   }
 
+  isVisible = true;
+  isHidden = false;
+
+  show() {
+    this.isVisible = !this.isVisible;
+  }
+
+  hidden() {
+    this.isHidden = !this.isHidden;
+  }
+
 }
 
 class Dog {

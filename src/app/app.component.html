@@ -2,19 +2,24 @@
 <div>
   <h3>Kurs {{title}}</h3>
  
-  <p>Dni tygodnia</p>
+  <p>Dni tygodnia - uzycie ngif</p>
 
-  <div *ngFor="let day of days">
-    <div [ngSwitch]="day">
-      <div *ngSwitchCase="'Poniedzialek'">Montag</div>
-      <div *ngSwitchCase="'Wtorek'">Dienstag</div>
-      <div *ngSwitchCase="'Sroda'">Mittwoch</div>
-      <div *ngSwitchCase="'Czwartek'">Donnerstag</div>
-      <div *ngSwitchCase="'Piatek'">Freitag</div>
-      <div *ngSwitchCase="'Sobota'">Samstag</div>
-      <div *ngSwitchDefault>Sonntag</div>
+  <ng-container *ngIf="isVisible">
+    <div *ngFor="let day of days">
+      <div>{{day}}</div>
+    </div>
+  </ng-container>
+  <button (click)="show()">NgIf</button>
+
+  <br><br>
+
+  <p>Dni tygodnia - uzycie hidden</p>
+  <div [hidden]="isHidden">
+    <div *ngFor="let day of days">
+      <div>{{day}}</div>
     </div>
   </div>
+  <button (click)="hidden()">Hidden</button>
 
 </div>
 
