@@ -1,25 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <h3>Kurs {{title}}</h3>
- 
-  <p>Dni tygodnia - uzycie ngif</p>
+  <h3 [className]="colorClass">Kurs</h3>
+  <img [src]="logoUrl">
+  <input [maxLength]="maxLength" [value]="inputText">
 
-  <ng-container *ngIf="isVisible">
-    <div *ngFor="let day of days">
-      <div>{{day}}</div>
-    </div>
-  </ng-container>
-  <button (click)="show()">NgIf</button>
-
-  <br><br>
-
-  <p>Dni tygodnia - uzycie hidden</p>
-  <div [hidden]="isHidden">
-    <div *ngFor="let day of days">
-      <div>{{day}}</div>
-    </div>
-  </div>
-  <button (click)="hidden()">Hidden</button>
+  <button [disabled]="isDisable" (click)="change()">Dodaj</button>
 
 </div>
 

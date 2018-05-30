@@ -5,32 +5,28 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 
-  title = 'Angular';
+  inputText = 'Tekst';
+  maxLength = 5;
+  colorClass = 'color';
+  logoUrl = '';
 
-  days = ['Poniedzialek', 'Wtorek', 'Sroda', 'Czwartek', 'Piatek', 'Sobota', 'Niedziela'];
-
-  dogs = new Array<Dog>();
+  isDisable = true;
 
   constructor() {
-    this.dogs.push(new Dog('Reksio', 4), new Dog('Łatek', 3), new Dog('Maksiu', 5));
+    setTimeout(() => {
+      this.isDisable = false;
+    }, 3000);
   }
 
-  isVisible = true;
-  isHidden = false;
-
-  show() {
-    this.isVisible = !this.isVisible;
+  change() {
+    this.inputText = 'Zmiana tekstu i koloru';
+    this.maxLength = 10;
+    this.colorClass = 'color2';
+    this.logoUrl = 'https://angular.io/assets/images/logos/angular/shield-large.svg';
   }
 
-  hidden() {
-    this.isHidden = !this.isHidden;
-  }
 
-}
-
-class Dog {
-  constructor(public name: string, public age: number) {
-  }
 }
