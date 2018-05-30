@@ -5,28 +5,31 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
-
-  inputText = 'Tekst';
-  maxLength = 5;
+  inputText = '';
   colorClass = 'color';
-  logoUrl = '';
-
   isDisable = true;
 
-  constructor() {
-    setTimeout(() => {
-      this.isDisable = false;
-    }, 3000);
+  constructor() {}
+
+  onFocus() {
+    this.colorClass = 'color2';
+  }
+
+  onClick(event) {
+    console.log(event);
+  }
+
+  onMouseMove(event) {
+    console.log('x: ' + event.clientX + ', y: ' + event.clientY);
+
+  }
+
+  onPaste() {
+    this.inputText = 'Nie wklejaj, wpisz!';
   }
 
   change() {
-    this.inputText = 'Zmiana tekstu i koloru';
-    this.maxLength = 10;
-    this.colorClass = 'color2';
-    this.logoUrl = 'https://angular.io/assets/images/logos/angular/shield-large.svg';
+    this.isDisable = false;
   }
-
-
 }
