@@ -12,12 +12,20 @@
     </ng-container>
   </ul>
 
-  <div *ngFor="let dog of dogs">
-    {{dog.name}}, {{dog.age}}
-  </div>
+  <div *ngIf="dogs.length > 0; then areDogs; else noDogs"></div>
 
-  <button (click)="addDogs()">Dodaj</butto>
-  <button (click)="removeDogs()">Usun</butto>
+  <ng-template #areDogs>
+    <div *ngFor="let dog of dogs">
+      {{dog.name}}, {{dog.age}}
+    </div>
+  </ng-template>
+    
+  <ng-template #noDogs>
+    <p>Brak</p>
+  </ng-template>
+
+  <button (click)="addDogs()">Dodaj</button>
+  <button (click)="removeDogs()">Usun</button>
 
 </div>
 
