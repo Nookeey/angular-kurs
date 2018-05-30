@@ -4,28 +4,17 @@
  
   <p>Dni tygodnia</p>
 
-  <ul>
-    <ng-container *ngFor="let day of days; let e = even">
-      <li *ngIf="e">
-        {{day}}
-      </li>
-    </ng-container>
-  </ul>
-
-  <div *ngIf="dogs.length > 0; then areDogs; else noDogs"></div>
-
-  <ng-template #areDogs>
-    <div *ngFor="let dog of dogs">
-      {{dog.name}}, {{dog.age}}
+  <div *ngFor="let day of days">
+    <div [ngSwitch]="day">
+      <div *ngSwitchCase="'Poniedzialek'">Montag</div>
+      <div *ngSwitchCase="'Wtorek'">Dienstag</div>
+      <div *ngSwitchCase="'Sroda'">Mittwoch</div>
+      <div *ngSwitchCase="'Czwartek'">Donnerstag</div>
+      <div *ngSwitchCase="'Piatek'">Freitag</div>
+      <div *ngSwitchCase="'Sobota'">Samstag</div>
+      <div *ngSwitchDefault>Sonntag</div>
     </div>
-  </ng-template>
-    
-  <ng-template #noDogs>
-    <p>Brak</p>
-  </ng-template>
-
-  <button (click)="addDogs()">Dodaj</button>
-  <button (click)="removeDogs()">Usun</button>
+  </div>
 
 </div>
 
