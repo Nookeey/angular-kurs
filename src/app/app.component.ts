@@ -11,13 +11,4 @@ export class AppComponent {
 
   constructor() {
   }
-
-  saveP(event) {
-    this.profession = event.target.value;
-  }
-
-  saveS(event) {
-    this.skill = event.target.value;
-  }
-
 }
