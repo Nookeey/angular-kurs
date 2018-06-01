@@ -1,17 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-<div class="container">
-  <app-add-task (emitTask)="add($event)"></app-add-task>
-</div>
-
-<div class="container">
-
-  <div>
-    <app-todo-task [tasksList]="tasksList" (emitDone)="done($event)" (emitRemove)="remove($event)"></app-todo-task>
-  </div>
-
-  <div>
-    <app-done-task [tasksDone]="tasksDone"></app-done-task>
-  </div>
-
-</div>
+<app-child>
+  <h1>Wysylam troche kodu html</h1>
+  <ul>
+    <li>Jeden</li>
+    <li>Dwa</li>
+    <li>Trzy</li>
+  </ul>
+</app-child>
