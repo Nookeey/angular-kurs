@@ -1,17 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <h3 [className]="colorClass">Kurs</h3>
+  <h3>Kurs</h3>
 
-  <input [disabled]="isDisable" (focus)="onFocus()">
+  <p>Ten pracownik to {{profession}}, a jego imiejetność to {{skill}}</p>
+
+  <label for="male">Zawod</label>
+  <input [value]="profession" (input)="saveP($event)">
   <br>
-  <input [disabled]="isDisable" (click)="onClick($event)">
-  <br>
-  <input [disabled]="isDisable" (mousemove)="onMouseMove($event)">
-  <br>
-  <input [disabled]="isDisable" (paste)="onPaste()">{{inputText}}
-  <br>
-  <button (click)="change()">Zmiana</button>
+  <label for="male">Umiejetnosc</label>
+  <input [value]="skill" (input)="saveS($event)">
+
 </div>
-
-
 
