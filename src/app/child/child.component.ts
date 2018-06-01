@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -10,9 +10,16 @@ export class ChildComponent implements OnInit {
   @Input()
   tasks;
 
+  @Output()
+  eventTask = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  select(task) {
+    this.eventTask.emit(task);
   }
 
 }
