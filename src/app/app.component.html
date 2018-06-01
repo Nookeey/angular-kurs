@@ -1,14 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h3>Kurs</h3>
 
-  <p>Ten pracownik to {{profession}}, a jego imiejetność to {{skill}}</p>
-
-  <label for="male">Zawod</label>
-  <input [(ngModel)]="profession">
-  <br>
-  <label for="male">Umiejetnosc</label>
-  <input [(ngModel)]="skill">
-
+<div class="container">
+  <dir>
+    Miejsce na dodawanie taskow
+    <input [(ngModel)]="newTask">
+    <button (click)="add()">Dodaj</button>
+  </dir>
 </div>
 
+<div class="container">
+
+  <div>
+    Lista zadań
+    <ng-container *ngIf="taskList.length > 0; else noTask">
+      <ul>
+        <li *ngFor="let task of taskList">
+          {{task}}
+          <button (click)="remove(task)">Usun</button>
+          <button (click)="done(task)">Zrobione</button>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+
+  <ng-template #noTask>
+    <p>Brak zadań, masz czas wolny!</p>
+  </ng-template>
+
+  <div>
+    Zadania wykonane: {{taskDone.length}}
+    <ul>
+      <li *ngFor="let task of taskDone">
+        {{task}}
+      </li>
+    </ul>
+  </div>
+
+</div>
