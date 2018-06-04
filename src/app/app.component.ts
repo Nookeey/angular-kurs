@@ -7,10 +7,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  tasksList = ['Sprzatanie', 'Gotowanie', 'Nauka'];
+  title = 'Nauka angulara';
+  dog = new Dog('Rex');
+  show = true;
 
-  selected(task: string): void {
-    console.log(task);
+  changeTitle() {
+    this.title = 'Angular jest fajny';
   }
 
+  changeDog() {
+    // this.dog = new Dog('Latek');
+    this.dog.name = 'Ciapek';
+  }
+
+  nothing () {
+  }
+
+  destory() {
+    this.show = !this.show;
+  }
+
+}
+
+export class Dog {
+  constructor (public name: string) {
+  }
 }

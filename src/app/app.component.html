@@ -1,8 +1,7 @@
-<app-child>
-  <h1>Wysylam troche kodu html</h1>
-  <ul>
-    <li>Jeden</li>
-    <li>Dwa</li>
-    <li>Trzy</li>
-  </ul>
-</app-child>
+<div *ngIf="show">
+  <app-child [inputText]="title" [inputDog]="dog"></app-child>
+</div>
+<button (click)="changeTitle()">Zmień tytuł</button>
+<button (click)="changeDog()">Zmień psa</button>
+<button (click)="nothing()">Nic nie rob</button>
+<button (click)="destory()">Usuń komponent</button>
