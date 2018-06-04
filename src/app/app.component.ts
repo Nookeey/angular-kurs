@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChildComponent } from './child/child.component';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,29 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'Nauka angulara';
-  dog = new Dog('Rex');
-  show = true;
+  tasksList = ['Sprzatanie', 'Gotowanie', 'Nauka angulara'];
 
-  changeTitle() {
-    this.title = 'Angular jest fajny';
+  @ViewChild('childRef')
+  childComponent: ChildComponent;
+
+  @ViewChild('inputText')
+  input: ElementRef;
+
+  selected(task: string): void {
+    console.log(task);
   }
 
-  changeDog() {
-    // this.dog = new Dog('Latek');
-    this.dog.name = 'Ciapek';
-  }
-
-  nothing () {
-  }
-
-  destory() {
-    this.show = !this.show;
-  }
-
-}
-
-export class Dog {
-  constructor (public name: string) {
+  add(input: HTMLInputElement) {
+    this.tasksList.push(input.value);
+    // this.childComponent.tasks = [];
+    this.input.nativeElement.value = '';
   }
 }

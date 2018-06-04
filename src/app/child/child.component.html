@@ -1,5 +1,6 @@
-<div #ref>
-  <p>{{inputText}}</p>
-  <p>Moj pies to: {{inputDog.name}}</p>
-</div>
-<ng-content></ng-content>
+<ul>
+  <li *ngFor="let task of tasks">
+    {{task}}
+    <button (click)="select(task)">Zaznacz</button>
+  </li>
+</ul>
