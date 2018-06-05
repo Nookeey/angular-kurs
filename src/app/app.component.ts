@@ -1,30 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { ClickService } from './services/click.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ClickService]
 })
 export class AppComponent implements OnInit {
 
-  tasksList: Array<string> = [];
-  tasksDone: Array<string> = [];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.tasksList = ['Sprzatanie', 'Nauka', 'Podlewanie', 'Zakupy'];
   }
 
-  add(task: string) {
-    this.tasksList.push(task);
-  }
 
-  remove(task: string) {
-    this.tasksList = this.tasksList.filter( e => e !== task);
-  }
-
-  done(task: string) {
-    this.tasksDone.push(task);
-    this.remove(task);
-  }
 
 }
