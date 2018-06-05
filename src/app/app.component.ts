@@ -9,11 +9,15 @@ import { ClickService } from './services/click.service';
 })
 export class AppComponent implements OnInit {
 
+  allClicks: number;
 
-  constructor() {
+  constructor(private clickService: ClickService) {
   }
 
   ngOnInit(): void {
+    this.clickService.getSum().subscribe(clicks => {
+      this.allClicks = clicks;
+    });
   }
 
 
