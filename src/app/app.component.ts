@@ -1,28 +1,30 @@
-import { ChildComponent } from './child/child.component';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  tasksList = ['Sprzatanie', 'Gotowanie', 'Nauka angulara'];
+  tasksList: Array<string> = [];
+  tasksDone: Array<string> = [];
 
-  @ViewChild('childRef')
-  childComponent: ChildComponent;
-
-  @ViewChild('inputText')
-  input: ElementRef;
-
-  selected(task: string): void {
-    console.log(task);
+  ngOnInit(): void {
+    this.tasksList = ['Sprzatanie', 'Nauka', 'Podlewanie', 'Zakupy'];
   }
 
-  add(input: HTMLInputElement) {
-    this.tasksList.push(input.value);
-    // this.childComponent.tasks = [];
-    this.input.nativeElement.value = '';
+  add(task: string) {
+    this.tasksList.push(task);
   }
+
+  remove(task: string) {
+    this.tasksList = this.tasksList.filter( e => e !== task);
+  }
+
+  done(task: string) {
+    this.tasksDone.push(task);
+    this.remove(task);
+  }
+
 }
