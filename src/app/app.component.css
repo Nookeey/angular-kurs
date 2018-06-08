@@ -1,2 +1,3 @@
-h1 { text-align: center; }
-.box { display: flex; justify-content: space-between; }
+.container {
+  display: flex; justify-content: space-around;
+}
