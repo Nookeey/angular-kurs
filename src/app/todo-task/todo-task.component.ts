@@ -1,3 +1,4 @@
+import { Task } from './../models/task';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TasksService } from '../services/tasks.service';
 
@@ -9,10 +10,10 @@ import { TasksService } from '../services/tasks.service';
 export class TodoTaskComponent implements OnInit {
 
 
-  tasksList = [];
+  tasksList: Array<Task> = [];
 
   constructor(private tasksService: TasksService) {
-    this.tasksService.getTasksListObs().subscribe((tasks: Array<string>) => {
+    this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
       this.tasksList = tasks;
     });
   }
@@ -20,11 +21,11 @@ export class TodoTaskComponent implements OnInit {
   ngOnInit() {
   }
 
-  remove(task: string) {
+  remove(task: Task) {
     this.tasksService.remove(task);
   }
 
-  done(task: string) {
+  done(task: Task) {
     this.tasksService.done(task);
   }
 
