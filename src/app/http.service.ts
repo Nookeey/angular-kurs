@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from './app.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,10 +16,15 @@ export class HttpService {
   }
 
   /** Pobieramy jeden post podajac id */
-  getPost(id: number) {}
+  getPost(id: number): Observable<Post> {
+    return this.http.get<Post>('https://jsonplaceholder.typicode.com/posts/' + id);
+  }
 
   /** Pobieramy wszystkie posty usera podajac w parametrze jego userID */
-  getPostByUser(userId: number) {}
+  getPostByUser(userId: number): Observable<Array<Post>> {
+    const param = new HttpParams().set('userId', userId + '');
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: param});
+  }
 
   /** Dodajemy nowy post */
   addPost(post: Post) {
@@ -35,4 +40,5 @@ export class HttpService {
   /** Aktualizujemy pola w post */
   changePost(post: Post) {
   }
+
 }

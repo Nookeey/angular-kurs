@@ -14,12 +14,21 @@ export class AppComponent {
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
       this.myPosts = posts;
+      console.log();
     });
   }
 
-  getPost() {}
+  getPost() {
+    this.httpService.getPost(5).subscribe(post => {
+      console.log(post);
+    });
+  }
 
-  getPostByUser() {}
+  getPostByUser() {
+    this.httpService.getPostByUser(5).subscribe(posts => {
+      console.log(posts);
+    });
+  }
 
   addPost() {
     const post: Post = ({
