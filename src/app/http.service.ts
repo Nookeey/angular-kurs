@@ -27,7 +27,8 @@ export class HttpService {
   }
 
   /** Dodajemy nowy post */
-  addPost(post: Post) {
+  addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>('https://jsonplaceholder.typicode.com/posts', post);
   }
 
   /** Aktualizujemy/Podmieniamy post */

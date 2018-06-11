@@ -14,7 +14,7 @@ export class AppComponent {
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
       this.myPosts = posts;
-      console.log();
+      console.log(posts);
     });
   }
 
@@ -31,11 +31,15 @@ export class AppComponent {
   }
 
   addPost() {
-    const post: Post = ({
+    const p: Post = ({
       userId: 1,
       id: null,
       title: 'Moj post',
       body: 'Pierwszy post o angularze!',
+    });
+
+    this.httpService.addPost(p).subscribe(post => {
+      console.log(post);
     });
   }
 
