@@ -8,7 +8,7 @@ import { HttpService } from './http.service';
 })
 export class AppComponent {
 
-  constructor(private httpService: HttpService) {}
+  constructor( private httpService: HttpService ) {}
 
   myPosts;
   getPosts() {
@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   getPost() {
-    this.httpService.getPost(5).subscribe(post => {
+    this.httpService.getPost(1).subscribe(post => {
       console.log(post);
     });
   }
@@ -44,11 +44,15 @@ export class AppComponent {
   }
 
   updatePost() {
-    const post: Post = ({
+    const p: Post = ({
       userId: 1,
-      id: null,
+      id: 1,
       title: 'sunt aut facer repellat provident occaecati excepturi optio reprehenderit',
       body: 'nowy wpis',
+    });
+
+    this.httpService.updatePost(p).subscribe(post => {
+      console.log(post);
     });
   }
 
