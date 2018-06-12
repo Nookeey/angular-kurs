@@ -1,3 +1,4 @@
+import { HttpService } from './http.service';
 import { Task } from './../models/task';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, } from 'rxjs';
@@ -7,7 +8,9 @@ export class TasksService {
 
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
 
-  constructor() {
+  // QbdkWkhUghQNntr2-oHRG7QWhVI5G6xJ
+
+  constructor(private httpService: HttpService) {
     const tasksList =
     [
       {name: 'Sprzatanie', created: new Date().toLocaleString(), isDone: false},

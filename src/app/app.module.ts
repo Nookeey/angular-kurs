@@ -1,3 +1,4 @@
+import { HttpService } from './services/http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { CheckedDirective } from './shared/checked.directive';
 import { DateDirective } from './shared/date.directive';
 import { TransformTaskPipe } from './shared/transform-task.pipe';
 import { SortNamePipe } from './shared/sort-name.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { SortNamePipe } from './shared/sort-name.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [TasksService],
+  providers: [TasksService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
