@@ -5,12 +5,10 @@ import { BehaviorSubject, Observable, } from 'rxjs';
 @Injectable()
 export class TasksService {
 
-  private tasksList: Array<Task> = [];
-
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
 
   constructor() {
-    this.tasksList =
+    const tasksList =
     [
       {name: 'Sprzatanie', created: new Date().toLocaleString(), isDone: false},
       {name: 'Nauka', created: new Date().toLocaleString(), isDone: false},
@@ -18,17 +16,18 @@ export class TasksService {
       {name: 'Zakupy', created: new Date().toLocaleString(), isDone: false},
       {name: 'Zakupy', created: new Date().toLocaleString(), end: new Date().toLocaleDateString(), isDone: true}
     ];
-    this.tasksListObs.next(this.tasksList);
+    this.tasksListObs.next(tasksList);
   }
 
   add(task: Task) {
-    this.tasksList.push(task);
-    this.tasksListObs.next(this.tasksList);
+    const list = this.tasksListObs.getValue();
+    list.push(task);
+    this.tasksListObs.next(list);
   }
 
   remove(task: Task) {
-    this.tasksList = this.tasksList.filter( e => e !== task);
-    this.tasksListObs.next(this.tasksList);
+    const list = this.tasksListObs.getValue().filter( e => e !== task);
+    this.tasksListObs.next(list);
   }
 
   done(task: Task) {
