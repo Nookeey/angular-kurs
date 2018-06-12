@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { HttpService } from './http.service';
 
@@ -8,14 +9,13 @@ import { HttpService } from './http.service';
 })
 export class AppComponent {
 
+  allPosts$: Observable<Array<Post>>;
+
   constructor( private httpService: HttpService ) {}
 
   myPosts;
   getPosts() {
-    this.httpService.getPosts().subscribe(posts => {
-      this.myPosts = posts;
-      console.log(posts);
-    });
+    this.allPosts$ = this.httpService.getPosts();
   }
 
   getPost() {
