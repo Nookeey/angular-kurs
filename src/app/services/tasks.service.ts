@@ -11,15 +11,11 @@ export class TasksService {
   // QbdkWkhUghQNntr2-oHRG7QWhVI5G6xJ
 
   constructor(private httpService: HttpService) {
-    const tasksList =
-    [
-      {name: 'Sprzatanie', created: new Date().toLocaleString(), isDone: false},
-      {name: 'Nauka', created: new Date().toLocaleString(), isDone: false},
-      {name: 'Podlewanie', created: new Date().toLocaleString(), isDone: false},
-      {name: 'Zakupy', created: new Date().toLocaleString(), isDone: false},
-      {name: 'Zakupy', created: new Date().toLocaleString(), end: new Date().toLocaleDateString(), isDone: true}
-    ];
-    this.tasksListObs.next(tasksList);
+    // const tasksList = [];
+    // this.tasksListObs.next(tasksList);
+    this.httpService.getTask().subscribe(list => {
+      this.tasksListObs.next(list);
+    });
   }
 
   add(task: Task) {
@@ -42,6 +38,10 @@ export class TasksService {
 
   getTasksListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
+  }
+
+  saveTaskInDb() {
+    this.httpService.saveTasks(this.tasksListObs.getValue());
   }
 
 }
