@@ -1,17 +1,8 @@
-<div class="container">
-  <app-add-task></app-add-task>
-</div>
+<h1>Routing w Angularze</h1>
 
-<div class="container">
-
-  <div>
-    <app-todo-task></app-todo-task>
-  </div>
-
-  <div>
-    <app-done-task></app-done-task>
-  </div>
-
-  <button (click)="save()">Zapisz</button>
-
-</div>
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/courses">Kursy</a>
+  <a routerLink="/about">O nas</a>
+</nav>
+<router-outlet></router-outlet>
