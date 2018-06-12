@@ -6,10 +6,8 @@ import { BehaviorSubject, Observable, } from 'rxjs';
 export class TasksService {
 
   private tasksList: Array<Task> = [];
-  private tasksDone: Array<Task> = [];
 
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
-  private tasksDoneObs = new BehaviorSubject<Array<Task>>([]);
 
   constructor() {
     this.tasksList =
@@ -17,7 +15,8 @@ export class TasksService {
       {name: 'Sprzatanie', created: new Date().toLocaleString(), isDone: false},
       {name: 'Nauka', created: new Date().toLocaleString(), isDone: false},
       {name: 'Podlewanie', created: new Date().toLocaleString(), isDone: false},
-      {name: 'Zakupy', created: new Date().toLocaleString(), isDone: false}
+      {name: 'Zakupy', created: new Date().toLocaleString(), isDone: false},
+      {name: 'Zakupy', created: new Date().toLocaleString(), end: new Date().toLocaleDateString(), isDone: true}
     ];
     this.tasksListObs.next(this.tasksList);
   }
@@ -33,17 +32,14 @@ export class TasksService {
   }
 
   done(task: Task) {
-    this.tasksDone.push(task);
-    this.remove(task);
-    this.tasksDoneObs.next(this.tasksDone);
+    task.end = new Date().toLocaleString();
+    task.isDone = true;
+    const list = this.tasksListObs.getValue();
+    this.tasksListObs.next(list);
   }
 
   getTasksListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
-  }
-
-  getTasksDoneObs(): Observable<Array<Task>> {
-    return this.tasksDoneObs.asObservable();
   }
 
 }
