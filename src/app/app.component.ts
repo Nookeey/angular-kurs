@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
-import { HttpService } from './http.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,75 +7,4 @@ import { HttpService } from './http.service';
 })
 export class AppComponent {
 
-  allPosts$: Observable<Array<Post>>;
-
-  constructor( private httpService: HttpService ) {}
-
-  myPosts;
-  getPosts() {
-    this.allPosts$ = this.httpService.posts$;
-  }
-
-  getPost() {
-    this.httpService.getPost(1).subscribe(post => {
-      console.log(post);
-    });
-  }
-
-  getPostByUser() {
-    this.httpService.getPostByUser(5).subscribe(posts => {
-      console.log(posts);
-    });
-  }
-
-  addPost() {
-    const p: Post = ({
-      userId: 1,
-      id: null,
-      title: 'Moj post',
-      body: 'Pierwszy post o angularze!',
-    });
-
-    this.httpService.addPost(p).subscribe(post => {
-      console.log(post);
-    });
-  }
-
-  updatePost() {
-    const p: Post = ({
-      userId: 1,
-      id: 1,
-      title: 'sunt aut facer repellat provident occaecati excepturi optio reprehenderit',
-      body: 'nowy wpis',
-    });
-
-    this.httpService.updatePost(p).subscribe(post => {
-      console.log(post);
-    });
-  }
-
-  deletePost() {
-    this.httpService.deletePost(1).subscribe(post => {
-      console.log(post);
-    });
-  }
-
-  changePost() {
-    const p: Post = ({
-      id: 1,
-      body: 'zmiana tylko wpisu',
-    });
-
-    this.httpService.changePost(p).subscribe(post => {
-      console.log(post);
-    });
-  }
-
-}
-
-export interface Post {
-  userId?: number;
-  id?: number;
-  title?: string;
-  body?: string;
 }

@@ -1,11 +1,17 @@
-<button (click)="getPosts()">getPosts</button>
-<button (click)="getPost()">getPost</button>
-<button (click)="getPostByUser()">getPostByUser</button>
-<button (click)="addPost()">addPost</button>
-<button (click)="updatePost()">updatePost</button>
-<button (click)="deletePost()">deletePost</button>
-<button (click)="changePost()">changePost</button>
+<!--The content below is only a placeholder and can be replaced.-->
 
-<div *ngFor="let post of allPosts$ | async">
-  {{post.title}}
+<div class="container">
+  <app-add-task></app-add-task>
+</div>
+
+<div class="container">
+
+  <div>
+    <app-todo-task></app-todo-task>
+  </div>
+
+  <div>
+    <app-done-task></app-done-task>
+  </div>
+
 </div>
