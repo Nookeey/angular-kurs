@@ -33,7 +33,7 @@ export class HttpService {
 
   /** Aktualizujemy/Podmieniamy post */
   updatePost(post: Post): Observable<Post> {
-    return this.http.put('https://jsonplaceholder.typicode.com/posts/' + post.id, post);
+    return this.http.put<Post>('https://jsonplaceholder.typicode.com/posts/' + post.id, post);
   }
 
   /** Usuwamy post */
@@ -42,7 +42,8 @@ export class HttpService {
   }
 
   /** Aktualizujemy pola w post */
-  changePost(post: Post) {
+  changePost(post: Post): Observable<Post> {
+    return this.http.patch<Post>('https://jsonplaceholder.typicode.com/posts/' + post.id, post);
   }
 
 }

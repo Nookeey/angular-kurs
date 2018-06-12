@@ -63,9 +63,13 @@ export class AppComponent {
   }
 
   changePost() {
-    const post: Post = ({
+    const p: Post = ({
       id: 1,
       body: 'zmiana tylko wpisu',
+    });
+
+    this.httpService.changePost(p).subscribe(post => {
+      console.log(post);
     });
   }
 
