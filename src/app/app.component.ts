@@ -56,7 +56,11 @@ export class AppComponent {
     });
   }
 
-  deletePost() {}
+  deletePost() {
+    this.httpService.deletePost(1).subscribe(post => {
+      console.log(post);
+    });
+  }
 
   changePost() {
     const post: Post = ({
