@@ -1,3 +1,5 @@
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { AboutComponent } from './about/about.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +19,17 @@ const appRoutes: Routes = [
   },
   {
     path: 'courses',
-    component: CoursesComponent
+    component: CoursesComponent,
+    children: [
+      {
+        path: '',
+        component: CoursesListComponent
+      },
+      {
+        path: ':id',
+        component: CourseDetailComponent
+      }
+    ]
   },
   {
     path: 'about',

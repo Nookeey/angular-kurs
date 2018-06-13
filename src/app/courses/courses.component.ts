@@ -1,3 +1,4 @@
+import { DataBaseService, Courses } from './../data-base.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class CoursesComponent {
 
 }

@@ -1,0 +1,10 @@
+<p>
+  courses works!
+</p>
+
+<ul>
+  <li *ngFor="let c of courses">
+    {{c.title}}
+    <button [routerLink]="[c.id]">Wiecej</button>
+  </li>
+</ul>

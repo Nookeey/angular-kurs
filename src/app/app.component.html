@@ -1,8 +1,13 @@
-<h1>Routing w Angularze</h1>
+<p>Routing</p>
 
-<nav>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/courses">Kursy</a>
-  <a routerLink="/about">O nas</a>
-</nav>
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/courses" routerLinkActive="active">Kursy</a>
+    <a routerLink="/about" routerLinkActive="active">O nas</a>
+  </nav>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
+</div>
+

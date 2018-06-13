@@ -1,4 +1,6 @@
+import { DataBaseService, Courses } from './../data-base.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  course: Courses;
+
+  constructor(private dbService: DataBaseService, private router: Router) { }
 
   ngOnInit() {
+    this.course = this.dbService.getRandomCourse();
+  }
+
+  getCourse() {
+    this.router.navigate(['/courses', this.course.id]);
   }
 
 }
