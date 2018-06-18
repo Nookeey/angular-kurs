@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ang": {
+    "angular-new": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ang",
+            "outputPath": "dist/angular-new",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +23,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -51,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ang:build"
+            "browserTarget": "angular-new:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ang:build:production"
+              "browserTarget": "angular-new:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ang:build"
+            "browserTarget": "angular-new:build"
           }
         },
         "test": {
@@ -96,7 +95,7 @@
         }
       }
     },
-    "ang-e2e": {
+    "angular-new-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -104,12 +103,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ang:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ang:serve:production"
-            }
+            "devServerTarget": "angular-new:serve"
           }
         },
         "lint": {
@@ -124,5 +118,5 @@
       }
     }
   },
-  "defaultProject": "ang"
+  "defaultProject": "angular-new"
 }

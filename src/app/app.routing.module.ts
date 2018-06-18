@@ -1,22 +1,44 @@
-import { TodoTaskComponent } from './todo-task/todo-task.component';
-import { Routes, RouterModule } from '@angular/router';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { AboutComponent } from './about/about.component';
+import { CoursesComponent } from './courses/courses.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { DoneTaskComponent } from './done-task/done-task.component';
+import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'todoTask',
+    component: HomeComponent,
     pathMatch: 'full'
   },
   {
-    path: 'todoTask',
-    component: TodoTaskComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
-    path: 'doneTask',
-    component: DoneTaskComponent
+    path: 'courses',
+    component: CoursesComponent,
+    children: [
+      {
+        path: '',
+        component: CoursesListComponent
+      },
+      {
+        path: ':id',
+        component: CourseDetailComponent
+      }
+    ]
   },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
@@ -24,4 +46,5 @@ const appRoutes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
+
 }

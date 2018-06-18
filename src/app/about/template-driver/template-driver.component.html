@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(conctactForm)" #conctactForm="ngForm">
+  <div style="display: inline-grid">
+
+    <label for="topic">Temat:</label>
+    <input [(ngModel)]="message.topic" #topic="ngModel" type="text" id="topic" name="topic" required>
+    <div *ngIf="!topic.valid && topic.dirty">Pole wymagane!</div>
+
+    <label for="message">Wiadomosc:</label>
+    <textarea [(ngModel)]="message.message" #msg="ngModel" cols="30" rows="10" id="message" name="message" required minlength="50"></textarea>
+    <div *ngIf="!msg.valid && msg.dirty">Pole wymagane!</div>
+    <div *ngIf="msg.errors && msg.errors.minlength">Za ktorka wiadomisc!</div>
+
+    <label for="name">Name:</label>
+    <input [(ngModel)]="message.name" #name="ngModel" type="text" id="name" name="name" required>
+    <div *ngIf="!name.valid && name.dirty">Pole wymagane!</div>
+
+    <label for="email">Email:</label>
+    <input [(ngModel)]="message.email" #email="ngModel" type="email" id="email" name="email" email required>
+    <div *ngIf="!email.valid && email.dirty">Pole wymagane!</div>
+    <div *ngIf="email.errors && email.errors.email && msg.dirty">Nieprawidłowy adres email</div>
+
+    <label for="course">Ktory kurs jest najfajniejszy?</label>
+    <select [(ngModel)]="message.course" id="course" name="course">
+      <option *ngFor="let course of courses" [value]="course">{{course}}</option>
+    </select>
+
+    <div>
+      <label for="bot">Jestes botem?</label>
+      <input [(ngModel)]="message.bot" [value]="true" type="radio" name="bot" id="bot">Tak
+      <input [(ngModel)]="message.bot" [value]="false" type="radio" name="bot" id="bot">Nie
+    </div>
+
+    <button type="submit" [disabled]="!conctactForm.valid">Wyślij</button>
+    <button type="reset" (click)="reset()">Reset</button>
+
+  </div>
+</form>
