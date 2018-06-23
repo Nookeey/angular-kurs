@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -21,7 +21,19 @@ export class ReactiveFormComponent implements OnInit {
       email:    new FormControl(null, [Validators.required, Validators.email] ),
       course:   new FormControl(this.courses[3]),
       bot:      new FormControl(null),
-      questions: new FormArray([new FormControl(null), new FormControl(null)])
+      questions: new FormArray([new FormControl(null), new FormControl(null)], this.questionsValidator)
+    });
+
+    this.contactForm.valueChanges.subscribe(value => {
+      console.log(value);      
+    });
+
+    this.contactForm.get('topic').valueChanges.subscribe(value => {
+      console.log(value);      
+    });
+
+    this.contactForm.get('email').statusChanges.subscribe(value => {
+      console.log(value);      
     });
   }
 
@@ -30,8 +42,11 @@ export class ReactiveFormComponent implements OnInit {
     arr.push(new FormControl(null));
   }
 
-  questionsValidator() {
-
+  questionsValidator(control: AbstractControl): ValidationErrors {
+    const arr = <[string]>control.value;
+    if(arr.includes('angularjs')){
+      return { forbbidenCourse: true };
+    }
   }
 
   onSubmit() {
@@ -45,6 +60,14 @@ export class ReactiveFormComponent implements OnInit {
     this.message.bot = this.contactForm.value.bot;
     console.log(this.message);
 
+    this.onReset();
+
+  }
+
+  onReset() {
+    this.contactForm.reset({
+      topic: 'Fajny kurs'
+    });
   }
 
 }

@@ -36,11 +36,12 @@
         {{i + 1}}
         <input style="margin: 5px;" type="text" [formControlName]="i">
       </div>
+      <div *ngIf="contactForm.get('questions').errors && contactForm.get('questions').errors['forbbidenCourse']">Zakazany kurs</div>
       <button type="button" (click)="addQuestion()">Dodaj</button>
     </div>
 
     <button type="submit" [disabled]="contactForm.invalid">Wyślij</button>
-    <button type="reset">Reset</button>
+    <button type="reset" (click)="onReset()">Reset</button>
 
 
   </div>
