@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import { AuthService } from './auth/auth.service';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-=======
-import { TasksService } from './services/tasks.service';
 import { Component, OnInit } from '@angular/core';
->>>>>>> 202cd527e8412772fc53ace87ae243e4edf12869
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(public authService: AuthService, private router: Router){ }
+  constructor(public authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 
 }

@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { TasksService } from './../services/tasks.service';
 import { Output, EventEmitter } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ export class AddTaskComponent implements OnInit {
 
   addForm: FormGroup;
 
-  constructor(private tasksService: TasksService) {
+  constructor(private tasksService: TasksService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class AddTaskComponent implements OnInit {
     const tasksList = new Array<Task>();
     const taskArr = <[string]>this.addForm.get('taskName').value;
     taskArr.forEach(taskName => {
-      const task = {name: taskName, created: new Date().toLocaleString(), isDone: false };
+      const task = {name: taskName, userId: this.authService.user.uid, created: new Date().toLocaleString(), isDone: false };
       tasksList.push(task);
     });
     return tasksList;

@@ -1,27 +1,15 @@
-import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  info: string;
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      if(params['name']){
-        this.info = 'Zaloguj sie do ' + params['name'];
-      } else {
-        this.info = null;
-      }
-    });
-  }
+  constructor(public authService: AuthService) { }
 
   login(formData: NgForm) {
     this.authService.login(formData.value.email, formData.value.password);

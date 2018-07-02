@@ -1,3 +1,5 @@
+import { User } from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpService } from './http.service';
 import { Task } from './../models/task';
 import { Injectable, OnInit } from '@angular/core';
@@ -8,11 +10,17 @@ export class TasksService {
 
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
 
-  // QbdkWkhUghQNntr2-oHRG7QWhVI5G6xJ
+  constructor(private httpService: HttpService, public angularFire: AngularFireAuth) {
+    angularFire.authState.subscribe(user => {
+      if (user) {
+        this.init();
+      } else {
+        this.tasksListObs.next([]);
+      }
+    });
+  }
 
-  constructor(private httpService: HttpService) {
-    // const tasksList = [];
-    // this.tasksListObs.next(tasksList);
+  init() {
     this.httpService.getTask().subscribe(list => {
       this.tasksListObs.next(list);
     });
