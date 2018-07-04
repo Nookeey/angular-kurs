@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -8,12 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   constructor(public authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['']);
+    this.router.navigate(['/home']);
   }
-
 }

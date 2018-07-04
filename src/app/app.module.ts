@@ -1,47 +1,55 @@
-import { environment } from './../environments/environment';
-import { HttpService } from './services/http.service';
+import { SharedModule } from './shared/shared.module';
+import { AboutModule } from './about/about.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { AppComponent } from './app.component';
-import { AddTaskComponent } from './add-task/add-task.component';
-import { TodoTaskComponent } from './todo-task/todo-task.component';
-import { DoneTaskComponent } from './done-task/done-task.component';
-import { TasksService } from './services/tasks.service';
-import { CheckedDirective } from './shared/checked.directive';
-import { DateDirective } from './shared/date.directive';
-import { TransformTaskPipe } from './shared/transform-task.pipe';
-import { SortNamePipe } from './shared/sort-name.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { CoursesComponent } from './courses/courses.component';
 import { AppRoutingModule } from './app.routing.module';
-import { LoginComponent } from './auth/login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DataBaseService } from './data-base.service';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthService } from './auth/auth.service';
+import { SecretComponent } from './secret/secret.component';
+import { AuthGuardsService } from './auth/auth-guards.service';
+import { Level1Component } from './secret/level1/level1.component';
+import { Level2Component } from './secret/level2/level2.component';
+
+const config = {
+  apiKey: 'AIzaSyD3F1aHxVyvHdRqPYUSH8k-AT_oNNMwOCw',
+  authDomain: 'ng-kurs1.firebaseapp.com',
+  databaseURL: 'https://ng-kurs1.firebaseio.com',
+  projectId: 'ng-kurs1',
+  storageBucket: '',
+  messagingSenderId: '611882025941'
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTaskComponent,
-    TodoTaskComponent,
-    DoneTaskComponent,
-    CheckedDirective,
-    DateDirective,
-    TransformTaskPipe,
-    SortNamePipe,
+    HomeComponent,
+    CoursesComponent,
+    PageNotFoundComponent,
+    CourseDetailComponent,
+    CoursesListComponent,
     LoginComponent,
+    SecretComponent,
+    Level1Component,
+    Level2Component,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    SharedModule
   ],
-  providers: [TasksService, HttpService],
+  providers: [DataBaseService, AuthService, AuthGuardsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

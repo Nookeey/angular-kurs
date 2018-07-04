@@ -1,34 +1,10 @@
-<div class="container">
-  <ul class="nav nav-pills justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="todoTask" routerLinkActive="active">Zadania</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="doneTask" routerLinkActive="active">Wykonane</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" *ngIf="!authService.user" routerLink="login" routerLinkActive="active">Zaloguj</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" *ngIf="authService.user" (click)="logout()">Wyloguj</a>
-    </li>
-  </ul>
-  <router-outlet></router-outlet>
-
-  <!-- <app-add-task></app-add-task>
-
-  <div class="container">
-
-    <div>
-      <app-todo-task></app-todo-task>
-    </div>
-
-    <div>
-      <app-done-task></app-done-task>
-    </div>
-
-
-  </div> -->
-
-
-</div>
+<nav>
+  <a routerLink="/home" routerLinkActive="active">Home</a>
+  <a routerLink="/courses" routerLinkActive="active">Kursy</a>
+  <a routerLink="/about" routerLinkActive="active">O nas</a>
+  <a routerLink="/secret" routerLinkActive="active">Tajne</a>
+  <a *ngIf="!authService.user" routerLink="/login" routerLinkActive="active">Zaloguj</a>
+  <a *ngIf="authService.user" (click)="logout()">Wyloguj</a>
+  <span *ngIf="authService.user">Witaj: {{authService.user.email}}</span>
+</nav>
+<router-outlet></router-outlet>
